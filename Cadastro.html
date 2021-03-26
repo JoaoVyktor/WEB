@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="Cadastro">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>CadastroIF</title>
+    <script type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+
+    <script type="text/javascript">
+      var app = angular.module("Cadastro", []);
+
+      let adicionarUsuario = function($scope){
+        $scope.nome;
+        $scope.email;
+        $scope.telefone;
+        $scope.alunos = [];
+    
+
+      $scope.adicionar = function(){
+
+          let usuario = {
+              "nome": $scope.nome,
+              "email": $scope.email,
+              "telefone": $scope.telefone,
+            
+          }
+          $scope.alunos.push(usuario);
+          console.log($scope.alunos)
+          none:$scope.usuario.nome="";
+
+      }
+   
+    }
+
+      app.controller("AdicionarUsuarioController", adicionarUsuario);
+    
+    </script> 
+  </head>
+  <body>
+    <link rel="stylesheet" href="index.css">
+
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-dark">
+
+          <a class="navbar-brand" href="http://127.0.0.1:5500/Cadastro.html">IFPB</a>
+        
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="http://127.0.0.1:5500/Cadastro.html">Home</a>
+              </li>
+
+              <li class="nav-iteme dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Professores
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">1º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">2º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">3º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">4º ANO</a>
+                  </div>
+              </li>
+
+              <li class="nav-iteme dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Disciplinas
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">1º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">2º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">3º ANO</a>
+                      <a class="dropdown-item" href="http://127.0.0.1:5500/Cadastro.html">4º ANO</a>
+                  </div>
+              </li>
+          </ul>
+      </nav>
+  </header>
+
+          <main>
+            <div class="jumbotron">
+    
+                <h1 class="display-4"><strong>Cadastro Alunos 4º Ano de Informática</strong></h1>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto bg-success" style="width: 1120px; height: 2px;">
+                  <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto bg-success" style="width: 750px; height: 2px;">
+              
+
+                  <div ng-controller = "AdicionarUsuarioController as adicionarUsuarioCtrl">
+                      <form>
+
+                              <label for="">Nome:</label>
+                              <input type="text" name="nome" ng-model="nome" onfocus="this.value='';" />
+
+
+
+                              <label for="">Email:</label>
+                              <input type="text" name="email" ng-model="email" onfocus="this.value='';" />
+
+
+                              <label for="">Telefone:</label>
+                              <input type="text" name="telefone" ng-model="telefone" onfocus="this.value='';" />
+
+                    
+
+                  
+                    
+                          <button type="button" name="adicionar" ng-click="adicionar()">Adicionar</button>
+                        </form>
+                      
+                
+                <h2 class="lead">Dados dos Alunos Cadastrados:</h2>
+                <hr class="my-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"> 
+                            <h3>Alunos</h3>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto bg-success" style="width: 320px; height: 2px;">
+                        </div>
+                        <div class="col">
+                            <h3>Email</h3>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto bg-success" style="width: 320px; height: 2px;">
+                        </div>
+                        <div class="col">
+                            <h3>Telefone</h3>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto bg-success" style="width: 320px; height: 2px;">
+                        </div>
+                    </div>
+                  </div>
+               
+
+                <div class="row">
+                    
+                  <div class="col">
+                    <ul ng-repeat="usuario in alunos">
+                      <li>{{usuario.nome}}</li>
+                    </ul>
+                  </div>
+                    
+                  <div class="col">
+                    <ul ng-repeat="usuario in alunos">
+                      <li>{{usuario.email}} </li>
+                    </ul>
+                  </div>
+    
+                  <div class="col">
+                    <ul ng-repeat="usuario in alunos">
+                      <li>{{usuario.telefone}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </main>
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
